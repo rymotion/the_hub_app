@@ -1,19 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'musicAccess.dart';
-import 'stream.dart' as stream;
 
 class Stream extends StatefulWidget {
   Stream();
 
   @override
   State<StatefulWidget> createState() => new _StreamState();
-
 }
 
 class _StreamState extends State<Stream> {
+  Access returnedPost;
 
-  Post returnedPost;
+  Post postMeta;
 
   @override
   void initState() {
@@ -21,6 +20,7 @@ class _StreamState extends State<Stream> {
     load();
     super.initState();
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -28,11 +28,19 @@ class _StreamState extends State<Stream> {
   }
 
   void load() async {
-      await returnedPost.fetchData().then((post){
-        print('\n${post}\n');
-      });
+//    await returnedPost.grabPost.then((Post x) {
+//      setState(() {
+//        postMeta = x;
+//      });
+//    });
+    new Access();
   }
 
   @override
-  Widget build(BuildContext context) => new ListView.builder(itemCount: ,itemBuilder: ,);
+  Widget build(BuildContext context) => new Scaffold(
+        body: new Container(
+          child: new Text('something here.'),
+        ),
+      );
+//  Widget build(BuildContext context) => new ListView.builder(itemCount: ,itemBuilder: ,);
 }

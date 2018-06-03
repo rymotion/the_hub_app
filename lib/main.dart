@@ -2,6 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'musicAccess.dart' as post;
 import 'stream.dart' as stream;
+import 'profile.dart' as profile;
+import 'discovery.dart' as discover;
+import 'saved.dart' as save;
 
 void main() => runApp(new MyApp());
 
@@ -49,20 +52,6 @@ class _MyHomePageState extends State<MyHomePage>
   }
 }
 
-class MyDrawer extends StatefulWidget {
-  MyDrawer({Key key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => new _MyDrawerState();
-}
-
-class _MyDrawerState extends State<MyDrawer> {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-  }
-}
-
 class MyTabber extends StatefulWidget {
   MyTabber({Key key}) : super(key: key);
 
@@ -73,29 +62,46 @@ class MyTabber extends StatefulWidget {
 class _MyTabberState extends State<MyTabber>
     with SingleTickerProviderStateMixin {
   TabController controller;
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) => new DefaultTabController(
       length: 4,
       child: new Scaffold(
         appBar: new AppBar(
+          title: new Text('MusicME'),
           bottom: new TabBar(controller: controller, tabs: [
             new Tab(
               icon: new Icon(Icons.audiotrack),
+              text: 'The Feed',
             ),
             new Tab(
               icon: new Icon(Icons.device_hub),
+              text: 'Around Me',
             ),
             new Tab(
               icon: new Icon(Icons.people),
+              text: 'Discover',
             ),
             new Tab(
-              icon: new Icon(Icons.check),
+              icon: new Icon(Icons.star),
+              text: 'Saved',
             ),
           ]),
         ),
-        body: new TabBarView(controller: controller, children: <Widget>[
-
-        ]),
-      ));
+        body: new TabBarView(
+          controller: controller,
+          children: <Widget>[
+            new stream.Stream(),
+            new profile.Profile(),
+            new discover.Discovery(),
+            new save.Saved(),
+          ],
+        ),
+      )
+  );
 }
