@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'The Hub',
       theme: new ThemeData(
         primarySwatch: Colors.red,
+        scaffoldBackgroundColor: Colors.black38,
       ),
       home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -80,7 +81,7 @@ class _MyTabberState extends State<MyTabber>
               text: 'The Feed',
             ),
             new Tab(
-              icon: new Icon(Icons.device_hub),
+              icon: new Icon(Icons.adjust),
               text: 'Around Me',
             ),
             new Tab(
